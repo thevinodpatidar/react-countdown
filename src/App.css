@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+.countdown-display-section{
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    left: 20px;
+    margin: 10px 30px;
+    overflow: hidden;
+    /* background-color: #2a23d2; */
+    padding: 20px 10px;
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(180, 179, 179, 0.849),
+                0px 0px 10px rgba(180, 179, 179, 0.849),
+                0px 0px 10px rgb(7, 7, 7);
+}
+
+.movie-title{
+    font-size: 40px;
+    font-family: monospace;
+    margin-bottom: 30px;
+}
+
+.Clock-days, .Clock-hours, .Clock-minutes, .Clock-seconds {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+    background-color: #15127cf1;
+    color: white;
+    border-radius: 7px;
+    border: 1px solid rgb(101, 67, 194);
+    box-shadow: 0px 0px 10px rgba(180, 179, 179, 0.849),
+    0px 0px 10px rgba(180, 179, 179, 0.849),
+    0px 0px 10px rgb(7, 7, 7);
+}
+
+.countdown-display-section .input-field{
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 7px;
+    outline: none;
+}
+
+.btn{
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 7px;
+    border: 1px solid dodgerblue;
+    border-radius: 7px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.btn:hover{
+    transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+   background-color: #2a23d2;
+   color: white;
+}
+img{
+    width: 40%;
+    height: 25%;
+}
+
+.search-section{
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+    left: 20px;
+    margin: 10px 30px;
+    overflow: hidden;
+    /* background-color: #2a23d2; */
+    padding: 20px 10px;
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(180, 179, 179, 0.849),
+                0px 0px 10px rgba(180, 179, 179, 0.849),
+                0px 0px 10px rgb(7, 7, 7);
+}
+
+.search-section .input-field{
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid #2a23d2;
+    border-radius: 7px;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    outline: none;
+}
