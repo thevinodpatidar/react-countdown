@@ -7,8 +7,10 @@ class App extends Component{
     constructor(props){
         super(props);
         this.state = {
-            deadline:'April 26, 2019',
+            image:'',
+            deadline:'',
             movieName:'',
+            title:'',
             newDeadLine: '',
         }
     }
@@ -21,36 +23,42 @@ class App extends Component{
 //         })
 // }
     changeDeadline(){
-        this.setState(
-            {
-                deadline:this.state.newDeadLine,
-                name:this.state.movieName
-            })
-                axios.get("http://www.omdbapi.com/?apikey=bb1cc3e1&t="+this.state.name)
-                .then(result =>{
-                    this.setState =({
-                        deadLine: result.data.Released
-                    })
-                })
+        const BASE_URL = "http://www.omdbapi.com/?apikey=bb1cc3e1&";
+        const FETCH_URL = `${BASE_URL}t=${this.state.movieName}`;
+        console.log(FETCH_URL);
+        fetch(FETCH_URL)
+        .then(response => response.json())
+        .then((result) =>{
+              const deadline = result.Released;
+              const image = result.Poster
+              const title = result.Title
+              console.log(result);
+               this.setState({
+                   deadline:deadline,
+                   image: image,
+                   title: title
+               })
+        });
+
     }
     render(){
         return(
 
             <div>
                 <div className="countdown-display-section">
-                <img src="http://cdn.collider.com/wp-content/uploads/2019/03/avengers-endgame-poster-405x600.jpg" alt=""/>
-                    <div className="movie-title">{this.state.name}</div>
+                <img src={this.state.image} alt=""/>
+                    <div className="movie-title">{this.state.movieName}</div>
                     <Clock 
                     deadLine ={this.state.deadline}
                     />
                  </div>
                 <div className="search-section">
                 <div>
-                    <label for="movie-name">Enter Movie Name</label>
+                <label for="movie-name">Enter Exact Movie Name</label>
                 <input  className="input-field" id="movie-name"
                     placeholder="Movie name"
                     onChange={event => this.setState({movieName: event.target.value})}
-                    />
+                />
                     {/* <input  className="input-field"
                     placeholder="Movie date"
                     onChange={event => this.setState({newDeadLine: event.target.value})}
