@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
-import './App.css'
+import './App.css';
+import axios from 'axios';
 import Clock from './Clock';
 
 class App extends Component{
@@ -7,20 +8,34 @@ class App extends Component{
         super(props);
         this.state = {
             deadline:'April 26, 2019',
-            name:'Avenger Endgame',
-            newDeadLine: ''
+            movieName:'',
+            newDeadLine: '',
         }
     }
-
+//     componentDidMount(){
+//         axios.get("http://www.omdbapi.com/?apikey=bb1cc3e1&t="+this.state.name)
+//         .then((result) =>{
+//             this.setState =({
+//                 news: result.data.Released
+//             })
+//         })
+// }
     changeDeadline(){
         this.setState(
             {
                 deadline:this.state.newDeadLine,
                 name:this.state.movieName
             })
+                axios.get("http://www.omdbapi.com/?apikey=bb1cc3e1&t="+this.state.name)
+                .then(result =>{
+                    this.setState =({
+                        deadLine: result.data.Released
+                    })
+                })
     }
     render(){
         return(
+
             <div>
                 <div className="countdown-display-section">
                 <img src="http://cdn.collider.com/wp-content/uploads/2019/03/avengers-endgame-poster-405x600.jpg" alt=""/>
@@ -36,10 +51,10 @@ class App extends Component{
                     placeholder="Movie name"
                     onChange={event => this.setState({movieName: event.target.value})}
                     />
-                    <input  className="input-field"
+                    {/* <input  className="input-field"
                     placeholder="Movie date"
                     onChange={event => this.setState({newDeadLine: event.target.value})}
-                    />
+                    /> */}
                     <a className="btn" onClick={() => this.changeDeadline()}>Submit</a>
                     </div>
                 </div>

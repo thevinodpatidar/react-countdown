@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import axios from 'axios';
 import './App.css'
 
 class Clock extends Component{
@@ -16,8 +17,9 @@ class Clock extends Component{
     }
 
     componentDidMount(){
-        setInterval(() => this.getTimeUntil(this.props.deadLine),1000);
+            setInterval(() => this.getTimeUntil(this.props.deadLine),1000)
     }
+    
     leading0(num){
         return num < 10 ? '0'+num : num;
     }
